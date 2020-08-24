@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>KD-Covid</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+
+  </head>
+  <body>
+
+    <div id="meu-container" class="meu-container ui grid container middle aligned">
+      <div class="questionario_corpo ui column">
+
+        <h2 class="ui header center aligned">
+          <img src="./img/icon-72.png" class="ui circular image">
+          KD-Covid
+        </h2>
+
+        <div class="ui error message hidden">
+
+          <i class="close icon"></i>
+          <div class="header">
+            Erro!
+          </div>
+
+          <ul class="list" id="listaErros">
+
+          </ul>
+
+        </div>
+
+        <div class="ui segment">
+          <div  id="pergunta" class="ui form"> </div>
+        </div>
+
+        <div class="ui large buttons fluid">
+          <button class="btn_voltar ui button grey labeled icon" onclick="voltarPergunta();">
+            Voltar
+            <i class="btn_voltar left chevron icon"></i>
+          </button>
+          <div class="or" data-text="ou"></div>
+          <button class="ui button green right labeled icon" onclick="proximaPergunta()">
+            Próxima
+            <i class="right chevron icon"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="js/questionario.js"></script>
+
+  </body>
+</html>

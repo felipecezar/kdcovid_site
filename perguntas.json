@@ -1,0 +1,102 @@
+[
+  {
+    "pergunta": "Como você está se sentindo?",
+    "tipo": "radio",
+    "opcoes": [
+      {"id": "withoutSymptom", "texto": "Bem, sem nenhum tipo de sintoma"},
+      {"id": "hasSymptom", "texto": "Sinto algum sintoma ou incômodo"}
+    ]
+  },
+  {
+    "pergunta": "Assinale os sintomas que você tem sentido.",
+    "tipo": "checkbox",
+    "opcoes": [
+      {"id": "hasFever", "texto": "Febre"},
+      {"id": "", "texto": "Perda de olfato ou paladar"},
+      {"id": "hasRunningNose", "texto": "Nariz escorrendo (coriza)"},
+      {"id": "hasTiredness", "texto": "Cansaço "},
+      {"id": "hasCough", "texto": "Tosse ou espirro"},
+      {"id": "hasChronicRespiratory", "texto": "Dificuldade de respirar"},
+      {"id": "hasPurpleMouth", "texto": "Cor azulada/roxa na boca ou rosto"},
+      {"id": "hasSoreThroat", "texto": "Dor de garganta"},
+      {"id": "hasChestPressure", "texto": "Pressão no peito"},
+      {"id": "hasDiarrhea", "texto": "Diarreia"},
+      {"id": "hasNOASymptom", "texto": "Nenhum destes"}
+    ]
+  },
+  {
+    "pergunta": "Há quanto tempo você se sente assim?",
+    "tipo": "radio",
+    "opcoes": [
+      {"id": "duration1to3Days", "texto": "1 a 3 dias"},
+      {"id": "duration4to7Days", "texto": "4 a 7 dias"},
+      {"id": "duration8to10Days", "texto": "8 a 10 dias"},
+      {"id": "duration11to14Days", "texto": "11 a 14 dias"},
+      {"id": "duration14PlusDays", "texto": "Mais de 14 dias"}
+    ]
+  },
+  {
+    "pergunta": "Nos últimos 14 dias, você:",
+    "tipo": "checkbox",
+    "opcoes": [
+      {"id": "wentOutOfCity", "texto": "Viajou para fora da sua cidade"},
+      {"id": "hadContactWithOutsider", "texto": "Teve contato com alguém que chegou de fora da cidade"},
+      {"id": "hadContactWithInfected", "texto": "Teve contato com alguém diagnosticado com Covid-19"},
+      {"id": "hasNOAContac", "texto": "Nenhum destes"}
+    ]
+  },
+  {
+    "pergunta": "Possui alguma dessas doenças?",
+    "tipo": "checkbox",
+    "opcoes": [
+      {"id": "hasDiabetes", "texto": "Diabetes"},
+      {"id": "hasHeartProblem", "texto": "Doença do coração "},
+      {"id": "hasChronicKidney", "texto": "Doença renal crônica"},
+      {"id": "hasBreathProblem", "texto": "Doença respiratória crônica (asma, bronquite, etc)"},
+      {"id": "hasHighPressure", "texto": "Pressão alta"},
+      {"id": "hasCancer", "texto": "Câncer"},
+      {"id": "dontHavePriorDisease", "texto": "Não possuo"},
+      {"id": "priorDiseasesDWA", "texto": "Não quero responder"}
+    ]
+  },
+  {
+    "pergunta": "Assinale sua faixa etária (idade)",
+    "tipo": "radio",
+    "opcoes": [
+      {"id": "age1to15Years", "texto": "1 a 15 anos"},
+      {"id": "age16to30Years", "texto": "16 a 30 anos"},
+      {"id": "age31to45Years", "texto": "31 a 45 anos"},
+      {"id": "age46to60Years", "texto": "46 a 60 anos "},
+      {"id": "age60PlusYears", "texto": "Mais de 60 anos"}
+    ]
+  },
+  {
+    "pergunta": "Qual o seu sexo? ",
+    "tipo": "radio",
+    "opcoes": [
+      {"id": "female", "texto": "Feminino"},
+      {"id": "male", "texto": "Masculino"},
+      {"id": "otherGender", "texto": "Outro"}
+    ]
+  },
+  {
+    "pergunta": "Qual cidade e bairro você mora?",
+    "tipo": "select",
+    "opcoes": [
+      {"id": "cityName", "texto": "Cidade"},
+      {"id": "cityName", "texto": "Salinas"},
+      {"id": "cityName", "texto": "Janaúba"},
+      {"id": "cityName", "texto": "Outra"}
+    ]
+  },
+  {
+    "pergunta": "Qual o seu nome completo?",
+    "tipo": "text",
+    "mascara": "nome"
+  },
+  {
+    "pergunta": "Para finalizar, informe seu telefone e/ou email de contato:",
+    "tipo": "text",
+    "mascara": "contato"
+  }
+]

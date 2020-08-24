@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>KD-Covid</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+  </head>
+  <body>
+
+    <div class="meu-container ui grid container middle aligned">
+      <div class="ui column center aligned">
+
+        <h2 class="ui header">
+          <img src="./img/icon-72.png" class="ui circular image">
+          KD-Covid
+        </h2>
+
+        <div class="ui compact segments ">
+          <div id="titulo" class="ui segment inverted">
+            <p id="classificacao" class="ui header center aligned">&nbsp;</p>
+          </div>
+          <div class="ui segment secondary left aligned">
+            <p id="resultado">
+            Baseado em suas respostas, é provável que você não se encaixe como caso suspeito de Covid-19. No entanto, continue mantendo as condutas de prevenção, como:
+            </p>
+
+            <div class="ui list bulleted">
+              <div class="item">Higienizar sempre as mãos com água e sabão ou álcool em gel;</div>
+              <div class="item">Permaneça em isolamento social;</div>
+              <div class="item">Use máscara;</div>
+              <div class="item">Evite tocar nos olhos, nariz e boca com as mãos não higienizadas;</div>
+              <div class="item">Não compartilhe objetos de uso pessoal.</div>
+            </div>
+            <p id="acao">
+              Caso a sua situação mude, refaça o questionário.
+            </p>
+            <div class="ui divider"></div>
+            <a class="ui button fluid primary" href="/questionario.html">Responder novamente</a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+    <script src="js/end.js"></script>
+
+  </body>
+</html>

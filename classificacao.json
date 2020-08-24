@@ -1,0 +1,17 @@
+[
+  {
+    "classificacao": "Baixo Risco",
+    "resultado":"Baseado em suas respostas, é provável que você não se encaixe como caso suspeito de Covid-19. No entanto, continue mantendo as condutas de prevenção, como:",
+    "acao":"Caso a sua situação mude, refaça o questionário."
+  },
+  {
+    "classificacao": "Risco Moderado",
+    "resultado":"Baseado em suas respostas, você apresenta risco moderado de Covid-19. No entanto, isso não se trata de um diagnóstico. Caso seus sintomas persistam ou piorem, busque a unidade básica de saúde mais próxima. É importante que você reforce as condutas de proteção, como:",
+    "acao":"Nos próximos dias, a equipe do KD-Covid poderá entrar em contato, caso você tenha disponibilizado um número de telefone ou e-mail!"
+  },
+  {
+    "classificacao": "Risco Alto",
+    "resultado":"Baseado em suas respostas, é possível que você se encaixe como caso suspeito de Covid-19. No entanto, isso não se trata de um diagnóstico. O ideal é que você busque a unidade básica de saúde mais próxima e reforce as medidas de proteção, como:",
+    "acao":"Nos próximos dias, a equipe do KD-Covid poderá entrar em contato, caso você tenha disponibilizado um número de telefone ou e-mail!"
+  }
+]
