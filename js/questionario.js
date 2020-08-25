@@ -70,8 +70,8 @@ window.onload = function() {
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(geoSucesso,geoErro)
   }
-  //comecar_questionario();
-  enviarQuestionario();
+  comecar_questionario();
+  //enviarQuestionario();
 }
 
 const geoSucesso = (posicao) => {
@@ -89,9 +89,9 @@ const enviarQuestionario = () => {
  
   var urlencoded = new URLSearchParams();
 
- // var dados = `{"android_id": "${api_json['android_id']}","phone":"${api_json['phone']}","age16to30Years":${api_json['age16to30Years']},"age1to15Years":${api_json['age1to15Years']},"age31to45Years":${api_json['age31to45Years']},"age46to60Years":${api_json['age46to60Years']},"age60PlusYears":${api_json['age60PlusYears']}, "cityName":"${api_json['cityName']}","dontHavePriorDisease":${api_json['dontHavePriorDisease']},"duration11to14Days":${api_json['duration11to14Days']},"duration14PlusDays":${api_json['duration14PlusDays']},"duration1to3Days":${api_json['duration1to3Days']},"duration4to7Days":${api_json['duration4to7Days']},"duration8to10Days":${api_json['duration8to10Days']},"email":"${api_json['email']}","female":${api_json['female']},"fullName":"${api_json['fullName']}","fullNameDWA":${api_json['fullNameDWA']}, "hadContactWithInfected":${api_json['hadContactWithInfected']},"hadContactWithOutsider":${api_json['hadContactWithOutsider']},"hadLast14DaysNOA":${api_json['hadLast14DaysNOA']},"hasBreathProblem":${api_json['hasBreathProblem']},"hasCancer":${api_json['hasCancer']},"hasChestPressure":${api_json['hasChestPressure']},"hasChronicKidney":${api_json['hasChronicKidney']},"hasChronicRespiratory":${api_json['hasChronicRespiratory']},"hasCough":${api_json['hasCough']},"hasDiabetes":${api_json['hasDiabetes']},"hasDiarrhea":${api_json['hasDiarrhea']},"hasFever":${api_json['hasFever']},"hasHeartProblem":${api_json['hasHeartProblem']},"hasHighPressure":${api_json['hasHighPressure']},"hasNOASymptom":${api_json['hasNOASymptom']},"hasPurpleMouth":${api_json['hasPurpleMouth']},"hasRunningNose":${api_json['hasRunningNose']},"hasSmellTasteLoss":${api_json['hasSmellTasteLoss']},"hasSoreThroat":${api_json['hasSoreThroat']},"hasSymptom":${api_json['hasSymptom']},"hasTiredness":${api_json['hasTiredness']},"male":${api_json['male']},"neighborhoodName":"${api_json['neighborhoodName']}","otherCity":${api_json['otherCity']},"otherGender":${api_json['otherGender']},"priorDiseasesDWA":${api_json['priorDiseasesDWA']},"resultCode":${api_json['resultCode']},"visitedPoints":"${api_json['visitedPoints']}","wentOutOfCity":${api_json['wentOutOfCity']},"zipCode":${api_json['zipCode']}}`;
+  var dados = `{"android_id": "${api_json['android_id']}","phone":"${api_json['phone']}","age16to30Years":${api_json['age16to30Years']},"age1to15Years":${api_json['age1to15Years']},"age31to45Years":${api_json['age31to45Years']},"age46to60Years":${api_json['age46to60Years']},"age60PlusYears":${api_json['age60PlusYears']}, "cityName":"${api_json['cityName']}","dontHavePriorDisease":${api_json['dontHavePriorDisease']},"duration11to14Days":${api_json['duration11to14Days']},"duration14PlusDays":${api_json['duration14PlusDays']},"duration1to3Days":${api_json['duration1to3Days']},"duration4to7Days":${api_json['duration4to7Days']},"duration8to10Days":${api_json['duration8to10Days']},"email":"${api_json['email']}","female":${api_json['female']},"fullName":"${api_json['fullName']}","fullNameDWA":${api_json['fullNameDWA']}, "hadContactWithInfected":${api_json['hadContactWithInfected']},"hadContactWithOutsider":${api_json['hadContactWithOutsider']},"hadLast14DaysNOA":${api_json['hadLast14DaysNOA']},"hasBreathProblem":${api_json['hasBreathProblem']},"hasCancer":${api_json['hasCancer']},"hasChestPressure":${api_json['hasChestPressure']},"hasChronicKidney":${api_json['hasChronicKidney']},"hasChronicRespiratory":${api_json['hasChronicRespiratory']},"hasCough":${api_json['hasCough']},"hasDiabetes":${api_json['hasDiabetes']},"hasDiarrhea":${api_json['hasDiarrhea']},"hasFever":${api_json['hasFever']},"hasHeartProblem":${api_json['hasHeartProblem']},"hasHighPressure":${api_json['hasHighPressure']},"hasNOASymptom":${api_json['hasNOASymptom']},"hasPurpleMouth":${api_json['hasPurpleMouth']},"hasRunningNose":${api_json['hasRunningNose']},"hasSmellTasteLoss":${api_json['hasSmellTasteLoss']},"hasSoreThroat":${api_json['hasSoreThroat']},"hasSymptom":${api_json['hasSymptom']},"hasTiredness":${api_json['hasTiredness']},"male":${api_json['male']},"neighborhoodName":"${api_json['neighborhoodName']}","otherCity":${api_json['otherCity']},"otherGender":${api_json['otherGender']},"priorDiseasesDWA":${api_json['priorDiseasesDWA']},"resultCode":${api_json['resultCode']},"visitedPoints":"${api_json['visitedPoints']}","wentOutOfCity":${api_json['wentOutOfCity']},"zipCode":${api_json['zipCode']}}`;
 
-  var dados = "{\"age16to30Years\":false,\"age1to15Years\":false,\"age31to45Years\":false,\"age46to60Years\":false,\"age60PlusYears\":true,\"android_id\":\"site\",\"cityName\":\"Porteirinha\",\"dontHavePriorDisease\":false,\"duration11to14Days\":false,\"duration14PlusDays\":false,\"duration1to3Days\":false,\"duration4to7Days\":false,\"duration8to10Days\":false,\"email\":\"\",\"female\":false,\"fullName\":\"\",\"fullNameDWA\":true,\"hadContactWithInfected\":false,\"hadContactWithOutsider\":false,\"hadLast14DaysNOA\":false,\"hasBreathProblem\":false,\"hasCancer\":false,\"hasChestPressure\":false,\"hasChronicKidney\":false,\"hasChronicRespiratory\":false,\"hasCough\":false,\"hasDiabetes\":false,\"hasDiarrhea\":false,\"hasFever\":false,\"hasHeartProblem\":false,\"hasHighPressure\":false,\"hasNOASymptom\":false,\"hasPurpleMouth\":false,\"hasRunningNose\":false,\"hasSmellTasteLoss\":false,\"hasSoreThroat\":false,\"hasSymptom\":false,\"hasTiredness\":false,\"male\":false,\"neighborhoodName\":null,\"otherCity\":false,\"otherGender\":true,\"phone\":\"00\",\"priorDiseasesDWA\":false,\"resultCode\":2,\"visitedPoints\":\"-18.5779703 -45.4514505\",\"wentOutOfCity\":true,\"zipCode\":null}"
+  //var dados = "{\"age16to30Years\":false,\"age1to15Years\":false,\"age31to45Years\":false,\"age46to60Years\":false,\"age60PlusYears\":true,\"android_id\":\"site\",\"cityName\":\"Porteirinha\",\"dontHavePriorDisease\":false,\"duration11to14Days\":false,\"duration14PlusDays\":false,\"duration1to3Days\":false,\"duration4to7Days\":false,\"duration8to10Days\":false,\"email\":\"\",\"female\":false,\"fullName\":\"\",\"fullNameDWA\":true,\"hadContactWithInfected\":false,\"hadContactWithOutsider\":false,\"hadLast14DaysNOA\":false,\"hasBreathProblem\":false,\"hasCancer\":false,\"hasChestPressure\":false,\"hasChronicKidney\":false,\"hasChronicRespiratory\":false,\"hasCough\":false,\"hasDiabetes\":false,\"hasDiarrhea\":false,\"hasFever\":false,\"hasHeartProblem\":false,\"hasHighPressure\":false,\"hasNOASymptom\":false,\"hasPurpleMouth\":false,\"hasRunningNose\":false,\"hasSmellTasteLoss\":false,\"hasSoreThroat\":false,\"hasSymptom\":false,\"hasTiredness\":false,\"male\":false,\"neighborhoodName\":null,\"otherCity\":false,\"otherGender\":true,\"phone\":\"00\",\"priorDiseasesDWA\":false,\"resultCode\":2,\"visitedPoints\":\"-18.5779703 -45.4514505\",\"wentOutOfCity\":true,\"zipCode\":null}"
 
   console.log(dados);
 
@@ -106,12 +106,13 @@ const enviarQuestionario = () => {
     redirect: 'follow'
   };
   
-  fetch("http://161.35.111.220/v1/Api.php?apicall=createpatient", requestOptions)
+  const url_api = "http://localhost/v1/Api.php?apicall=createpatient";
+  fetch(url_api, requestOptions)
     .then(response => response.text())
     .then(result => {
       console.log(result);
       console.log('Enviado')
-      // return window.location.assign("/result.html");
+      return window.location.assign("/result.html");
     })
     .catch(error => console.log('Erro:', error));
 }
@@ -415,7 +416,7 @@ var criarCampoTexto = (id) =>{
     telefoneInput.classList.add('opcao');
     telefoneInput.setAttribute("type", "tel");
     telefoneInput.setAttribute("pattern", "\\([0-9]{2}\\)[0-9]{4,5}-[0-9]{4}$");
-    telefoneInput.setAttribute("placeholder", "Informe aqui seu telefone (38)99999-9999");
+    telefoneInput.setAttribute("placeholder", "(38)99999-9999");
     telefoneInput.setAttribute("onblur", "formatarTelefone(this)");
     itemLista1.appendChild(telefoneInput);
 
@@ -431,7 +432,7 @@ var criarCampoTexto = (id) =>{
     emailInput.classList.add('opcao');
     emailInput.setAttribute("type", "email");
     emailInput.setAttribute("pattern", "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$");
-    emailInput.setAttribute("placeholder", "Informe aqui seu email");
+
     itemLista2.appendChild(emailInput);
 
     itemLista.appendChild(itemLista1);
