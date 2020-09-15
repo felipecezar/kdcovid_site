@@ -46,6 +46,17 @@
     ]
   },
   {
+    "pergunta": "Assinale sua faixa etária (idade)",
+    "tipo": "radio",
+    "opcoes": [
+      {"id": "age1to15Years", "texto": "1 a 15 anos"},
+      {"id": "age16to30Years", "texto": "16 a 30 anos"},
+      {"id": "age31to45Years", "texto": "31 a 45 anos"},
+      {"id": "age46to60Years", "texto": "46 a 60 anos "},
+      {"id": "age60PlusYears", "texto": "Mais de 60 anos"}
+    ]
+  },
+  {
     "pergunta": "Possui alguma dessas doenças?",
     "tipo": "checkbox",
     "opcoes": [
@@ -57,17 +68,6 @@
       {"id": "hasCancer", "texto": "Câncer"},
       {"id": "dontHavePriorDisease", "texto": "Não possuo"},
       {"id": "priorDiseasesDWA", "texto": "Não quero responder"}
-    ]
-  },
-  {
-    "pergunta": "Assinale sua faixa etária (idade)",
-    "tipo": "radio",
-    "opcoes": [
-      {"id": "age1to15Years", "texto": "1 a 15 anos"},
-      {"id": "age16to30Years", "texto": "16 a 30 anos"},
-      {"id": "age31to45Years", "texto": "31 a 45 anos"},
-      {"id": "age46to60Years", "texto": "46 a 60 anos "},
-      {"id": "age60PlusYears", "texto": "Mais de 60 anos"}
     ]
   },
   {
@@ -86,6 +86,7 @@
       {"id": "cityName", "texto": "Cidade"},
       {"id": "cityName", "texto": "Salinas"},
       {"id": "cityName", "texto": "Janaúba"},
+      {"id": "cityName", "texto": "Berizal"},
       {"id": "cityName", "texto": "Outra"}
     ]
   },

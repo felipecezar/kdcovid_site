@@ -9,13 +9,15 @@ $('.message .close')
   })
 ;
 
-// console.log('AQUI!')
-
 let perguntas = [];
 let bairros = {};
 let perguntaAtual = 1;
 let pulo = false;
 let questionario_respostas = [];
+
+let cadAnt  = localStorage.getItem('cadAnt') ? JSON.parse(localStorage.getItem('cadAnt')) : [];
+
+
 
 let api_json = {
   "age16to30Years":false,
@@ -24,8 +26,8 @@ let api_json = {
   "age46to60Years":false,
   "age60PlusYears":false,
   "android_id":"site",
-  "cityName":"Janaúba",
-  "neighborhoodName":"Floresta",
+  "cityName":"",
+  "neighborhoodName":"",
   "otherCity":false,
   "dontHavePriorDisease":false,
   "duration11to14Days":false,
@@ -34,12 +36,12 @@ let api_json = {
   "duration4to7Days":false,
   "duration8to10Days":false,
   "email":"",
-  "phone":"(11)11111-1111",
+  "phone":"",
   "female":false,
   "male":false,
   "otherGender":false,
   "fullName":"",
-  "fullNameDWA":true,
+  "fullNameDWA":false,
   "hadContactWithInfected":false,
   "hadContactWithOutsider":false,
   "hadLast14DaysNOA":false,
@@ -64,7 +66,7 @@ let api_json = {
   "priorDiseasesDWA":false,
   "resultCode":0,
   "visitedPoints":"",
-  "wentOutOfCity":true,
+  "wentOutOfCity":false,
   "zipCode":null
 }
 
@@ -86,23 +88,22 @@ const geoErro = (erro) => {
 ////////////////////////////////////////////////////////////////////////////////
 const enviarQuestionario = () => {
   
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
- 
-  var urlencoded = new URLSearchParams();
-
   console.log(api_json);
 
   var dados = `{"android_id": "${api_json['android_id']}","phone":"${api_json['phone']}","age16to30Years":${api_json['age16to30Years']},"age1to15Years":${api_json['age1to15Years']},"age31to45Years":${api_json['age31to45Years']},"age46to60Years":${api_json['age46to60Years']},"age60PlusYears":${api_json['age60PlusYears']}, "cityName":"${api_json['cityName']}","dontHavePriorDisease":${api_json['dontHavePriorDisease']},"duration11to14Days":${api_json['duration11to14Days']},"duration14PlusDays":${api_json['duration14PlusDays']},"duration1to3Days":${api_json['duration1to3Days']},"duration4to7Days":${api_json['duration4to7Days']},"duration8to10Days":${api_json['duration8to10Days']},"email":"${api_json['email']}","female":${api_json['female']},"fullName":"${api_json['fullName']}","fullNameDWA":${api_json['fullNameDWA']}, "hadContactWithInfected":${api_json['hadContactWithInfected']},"hadContactWithOutsider":${api_json['hadContactWithOutsider']},"hadLast14DaysNOA":${api_json['hadLast14DaysNOA']},"hasBreathProblem":${api_json['hasBreathProblem']},"hasCancer":${api_json['hasCancer']},"hasChestPressure":${api_json['hasChestPressure']},"hasChronicKidney":${api_json['hasChronicKidney']},"hasChronicRespiratory":${api_json['hasChronicRespiratory']},"hasCough":${api_json['hasCough']},"hasDiabetes":${api_json['hasDiabetes']},"hasDiarrhea":${api_json['hasDiarrhea']},"hasFever":${api_json['hasFever']},"hasHeartProblem":${api_json['hasHeartProblem']},"hasHighPressure":${api_json['hasHighPressure']},"hasNOASymptom":${api_json['hasNOASymptom']},"hasPurpleMouth":${api_json['hasPurpleMouth']},"hasRunningNose":${api_json['hasRunningNose']},"hasSmellTasteLoss":${api_json['hasSmellTasteLoss']},"hasSoreThroat":${api_json['hasSoreThroat']},"hasSymptom":${api_json['hasSymptom']},"hasTiredness":${api_json['hasTiredness']},"male":${api_json['male']},"neighborhoodName":"${api_json['neighborhoodName']}","otherCity":${api_json['otherCity']},"otherGender":${api_json['otherGender']},"priorDiseasesDWA":${api_json['priorDiseasesDWA']},"resultCode":${api_json['resultCode']},"visitedPoints":"${api_json['visitedPoints']}","wentOutOfCity":${api_json['wentOutOfCity']},"zipCode":${api_json['zipCode']}}`;
 
-  //var dados = "{\"age16to30Years\":false,\"age1to15Years\":false,\"age31to45Years\":false,\"age46to60Years\":false,\"age60PlusYears\":true,\"android_id\":\"site\",\"cityName\":\"Porteirinha\",\"dontHavePriorDisease\":false,\"duration11to14Days\":false,\"duration14PlusDays\":false,\"duration1to3Days\":false,\"duration4to7Days\":false,\"duration8to10Days\":false,\"email\":\"\",\"female\":false,\"fullName\":\"\",\"fullNameDWA\":true,\"hadContactWithInfected\":false,\"hadContactWithOutsider\":false,\"hadLast14DaysNOA\":false,\"hasBreathProblem\":false,\"hasCancer\":false,\"hasChestPressure\":false,\"hasChronicKidney\":false,\"hasChronicRespiratory\":false,\"hasCough\":false,\"hasDiabetes\":false,\"hasDiarrhea\":false,\"hasFever\":false,\"hasHeartProblem\":false,\"hasHighPressure\":false,\"hasNOASymptom\":false,\"hasPurpleMouth\":false,\"hasRunningNose\":false,\"hasSmellTasteLoss\":false,\"hasSoreThroat\":false,\"hasSymptom\":false,\"hasTiredness\":false,\"male\":false,\"neighborhoodName\":null,\"otherCity\":false,\"otherGender\":true,\"phone\":\"00\",\"priorDiseasesDWA\":false,\"resultCode\":2,\"visitedPoints\":\"-18.5779703 -45.4514505\",\"wentOutOfCity\":true,\"zipCode\":null}"
+  
+  const cadastro = {'telefone':  api_json['phone'], 
+                    'email':  api_json['email'], 
+                    'date': new Date().getTime()};          
+  cadAnt.push(cadastro);
+  localStorage.setItem("cadAnt", JSON.stringify(cadAnt));
 
-  console.log(dados);
-
-
-  urlencoded.append("patient_json",dados)
-
-  var requestOptions = {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  const urlencoded = new URLSearchParams();
+  urlencoded.append("patient_json",dados);
+  const requestOptions = {
     mode: 'no-cors',
     method: 'POST',
     headers: myHeaders,
@@ -162,7 +163,7 @@ var proximaPergunta = () => {
 
     if (perguntas[perguntaAtual-1].mascara == "nome"){
       api_json["fullName"] = document.querySelector("input[type=text]").value;
-      api_json["fullNameDWA"] = document.querySelector('#inputPreencher').checked;
+      api_json["fullNameDWA"] = document.querySelector('#inputNaoPreencher').checked;
       respostas = [document.querySelector("input[type=text]").value];
     }
     else if (perguntas[perguntaAtual-1].mascara == "contato"){
@@ -171,11 +172,30 @@ var proximaPergunta = () => {
       api_json["phone"] = fone;
       api_json["email"] = email;
       respostas = [fone,email];
+
     }
 
   }
 
 ///////////////////////// TRATANDO ERROS ///////////////////////////////////////
+
+  const antTelefones = cadAnt.filter(c => c.telefone ===  api_json["phone"] && api_json["phone"] !== '').map(c => c.date);
+  let horasFone;
+
+  antTelefones.forEach( x => {
+    const intervalo = Math.abs(new Date().getTime() - x); 
+    horasFone = Math.ceil(intervalo / (1000 * 60 * 60));
+  });
+
+  const antEmails = cadAnt.filter(c => c.email ===  api_json["email"] && api_json["email"] !== '').map(c => c.date);
+  let horasEmail;
+
+  antEmails.forEach( x => {
+    const intervalo = Math.abs(new Date().getTime() - x); 
+    horasEmail = Math.ceil(intervalo / (1000 * 60 * 60));
+  });
+
+
   let listaErros =  document.querySelector('#listaErros');
   listaErros.textContent = '';
   let msg =  document.querySelector('.message');
@@ -190,22 +210,22 @@ var proximaPergunta = () => {
   else if ( perguntas[perguntaAtual-1].mascara == "nome"
             && document.querySelector('#inputPreencher').checked
             && document.querySelector("input[type=text]").value == ''){
-    let errolist = document.createElement("li");
-    errolist.textContent = 'Favor informe o nome ou selecione não preencher';
-    listaErros.appendChild(errolist);
+    let errolist2 = document.createElement("li");
+    errolist2.textContent = 'Favor informe o nome ou selecione não preencher';
+    listaErros.appendChild(errolist2);
     msg.classList.remove('hidden');
   }
   else if (camposInvalido.length > 0){
     camposInvalido.forEach(item => {
       if (item.type == 'email'){
-        let errolist2 = document.createElement("li");
-        errolist2.textContent = 'Email inválido.';
-        listaErros.appendChild(errolist2);
+        let errolist3 = document.createElement("li");
+        errolist3.textContent = 'Email inválido.';
+        listaErros.appendChild(errolist3);
       }
       if (item.type == 'tel'){
-        let errolist3 = document.createElement("li");
-        errolist3.textContent= 'Telefone inválido.';
-        listaErros.appendChild(errolist3);
+        let errolist4 = document.createElement("li");
+        errolist4.textContent= 'Telefone inválido.';
+        listaErros.appendChild(errolist4);
       }
     });
     msg.classList.remove('hidden');
@@ -213,11 +233,24 @@ var proximaPergunta = () => {
   else if ( perguntas[perguntaAtual-1].mascara == "contato"
             && document.querySelector("input[type=tel]").value === ""
             && document.querySelector("input[type=email]").value === ""){
-    let errolist = document.createElement("li");
-    errolist.textContent = 'Favor preecher email e/ou telefone.';
-    listaErros.appendChild(errolist);
+    let errolist5 = document.createElement("li");
+    errolist5.textContent = 'Favor preecher email e/ou telefone.';
+    listaErros.appendChild(errolist5);
     msg.classList.remove('hidden');
   }
+  else if (perguntas[perguntaAtual-1].mascara == "contato" && horasFone < 48) {
+    let errolist6 = document.createElement("li");
+    errolist6.textContent = 'Houve um teste com esse telefone nas ultimas 48 horas.';
+    listaErros.appendChild(errolist6);
+    msg.classList.remove('hidden');
+  }
+  else if (perguntas[perguntaAtual-1].mascara == "contato" && horasEmail < 48) {
+    let errolist7 = document.createElement("li");
+    errolist7.textContent = 'Houve um teste com esse e-mail nas ultimas 48 horas.';
+    listaErros.appendChild(errolist7);
+    msg.classList.remove('hidden');
+  }
+
   else {
     perguntaAtual += 1;
     msg.classList.add('hidden');
@@ -232,12 +265,7 @@ var proximaPergunta = () => {
   if ( perguntaAtual > perguntas.length) {
     calcularRisco();
     localStorage.setItem("resultado", api_json['resultCode']);
-    localStorage.setItem("questionarioRespostas", JSON.stringify(questionario_respostas));
-    localStorage.setItem("apiJson", JSON.stringify(api_json));
-//---------------------------------------------------------------------------------    
     enviarQuestionario();  
-    // return window.location.assign("/result.html");
-    
   }
 
   if(pergunta == "Como você está se sentindo?" && respostas.includes('Bem, sem nenhum tipo de sintoma')){
@@ -249,7 +277,7 @@ var proximaPergunta = () => {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-var voltarPergunta = () => {
+const voltarPergunta = () => {
 
   if(perguntaAtual== 5 && pulo == true){
     perguntaAtual = 1;
@@ -397,6 +425,7 @@ var criarCampoTexto = (id) =>{
     let nomeInput  = document.createElement("input");
     nomeInput.classList.add('opcao');
     nomeInput.setAttribute("type", "text");
+    nomeInput.setAttribute("maxlength", "40");
     nomeInput.setAttribute("placeholder", "Informe aqui seu nome");
     itemLista3.appendChild(nomeInput);
 
@@ -418,6 +447,7 @@ var criarCampoTexto = (id) =>{
     let telefoneInput  = document.createElement("input");
     telefoneInput.classList.add('opcao');
     telefoneInput.setAttribute("type", "tel");
+    telefoneInput.setAttribute("maxlength", "11"); 
     telefoneInput.setAttribute("pattern", "\\([0-9]{2}\\)[0-9]{4,5}-[0-9]{4}$");
     telefoneInput.setAttribute("placeholder", "(38)99999-9999");
     telefoneInput.setAttribute("onblur", "formatarTelefone(this)");
