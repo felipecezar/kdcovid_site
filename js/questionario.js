@@ -17,8 +17,6 @@ let questionario_respostas = [];
 
 let cadAnt  = localStorage.getItem('cadAnt') ? JSON.parse(localStorage.getItem('cadAnt')) : [];
 
-
-
 let api_json = {
   "age16to30Years":false,
   "age1to15Years":false,
@@ -97,6 +95,7 @@ const enviarQuestionario = () => {
                     'email':  api_json['email'], 
                     'date': new Date().getTime()};          
   cadAnt.push(cadastro);
+
   localStorage.setItem("cadAnt", JSON.stringify(cadAnt));
 
   const myHeaders = new Headers();
@@ -278,7 +277,6 @@ var proximaPergunta = () => {
 
 ////////////////////////////////////////////////////////////////////////////////
 const voltarPergunta = () => {
-
   if(perguntaAtual== 5 && pulo == true){
     perguntaAtual = 1;
     pulo = false;
@@ -581,7 +579,7 @@ var mostrar = (id) => {
 
 }
 
-
+////////////////////////////////////////////////////////////////////////////////
 const calcularRisco = () => {
 
   let sente_bem      = null;
@@ -594,6 +592,8 @@ const calcularRisco = () => {
   let idade60        = null;
   let idadeMenor30   = null;
   let comorbidade    = null;
+  let qt_sistomas    = null;
+
 
   questionario_respostas.forEach(resp => {
     switch (resp.pergunta) {
@@ -632,12 +632,24 @@ const calcularRisco = () => {
     }
   })
 
+  // console.log('sente_bem ',sente_bem);
+  // console.log('teve_contato ',teve_contato);
+  // console.log('tem_sintoma ',tem_sintoma);
+  // console.log('tem_febre ',tem_febre);
+  // console.log('tempo_1a7 ',tempo_1a7);
+  // console.log('tempo_7a14 ',tempo_7a14);
+  // console.log('tempo_plus14 ',tempo_plus14);
+  // console.log('idade60 ',idade60);
+  // console.log('idadeMenor30 ',idadeMenor30);
+  // console.log('comorbidade ',comorbidade);
+  // console.log('qt_sistomas ',qt_sistomas);
+
   if (sente_bem && !teve_contato){
-    //COVID-19 IMPROVÁVEL
+    //IMPROVÁVEL
     api_json['resultCode'] = 0;
   }
   else if (!sente_bem && !teve_contato && !tem_sintoma){
-    //COVID-19 IMPROVÁVEL
+    //IMPROVÁVEL
     api_json['resultCode'] = 0;
   }
   else if (sente_bem && teve_contato ){
@@ -656,7 +668,7 @@ const calcularRisco = () => {
     //SUSPEITA – INÍCIO DO CURSO
     api_json['resultCode'] = 2;
   }
-  else if (!sente_bem && !teve_contato && qt_sistomas > 2 && !tem_febre && tempo_1a7){
+  else if (!sente_bem && !teve_contato && qt_sistomas > 1 && !tem_febre && tempo_1a7){
     //SUSPEITA – INÍCIO DO CURSO
     api_json['resultCode'] = 2;
   }
@@ -665,10 +677,6 @@ const calcularRisco = () => {
     api_json['resultCode'] = 3;
   }
   else if (!sente_bem && qt_sistomas > 2 && !tem_febre && !teve_contato && tempo_7a14){
-    //SUSPEITA – MEIO DO CURSO
-    api_json['resultCode'] = 3;
-  }
-  else if (!sente_bem && qt_sistomas > 2 && tem_febre && !teve_contato && tempo_plus14 && idadeMenor30){
     //SUSPEITA – MEIO DO CURSO
     api_json['resultCode'] = 3;
   }
@@ -708,7 +716,7 @@ const calcularRisco = () => {
     //FORTE SUSPEITA –  RISCO ETÁRIO
     api_json['resultCode'] = 6;
   }
-  else if (!sente_bem && qt_sistomas == 2 && tem_febre && teve_contato && comorbidade){
+  else if (!sente_bem && qt_sistomas > 2 && tem_febre && teve_contato && comorbidade){
     //FORTE SUSPEITA – COMORBIDADES
     api_json['resultCode'] = 6;
   }
@@ -721,7 +729,8 @@ const calcularRisco = () => {
     api_json['resultCode'] = 6;
   }
   else {
-    //COVID-19 IMPROVÁVEL
+    // RESPOSTA PADRÃO
+    api_json['resultCode'] = 2;
   }
 
 }
